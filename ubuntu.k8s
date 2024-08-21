@@ -1,0 +1,44 @@
+    1  cat /etc/os-release
+    2  sudo apt update && sudo apt upgrade -y
+    3  sudo apt update
+    4  sudo apt install docker.io
+    5  sudo systemctl enable docker 
+    6  sudo systemctl start docker
+    7  sudo swapon --show  
+    8  cat /etc/fstab
+    9  lsblk
+   10  sudo swapoff -a
+   11  vim /etc/hosts
+   12  sudo vim /etc/hosts
+   13  curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add  
+   14  sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"  
+   15  sudo apt update
+   16  sudo apt install -y kubelet kubeadm kubectl
+   17  sudo gpg install -y kubelet kubeadm kubectl
+   18  sudo modprobe br_netfilter
+   19  sudo tee /etc/modules-load.d/k8s.conf <<EOF
+overlay
+br_netfilter
+EOF
+
+   20  sudo tee /etc/sysctl.d/kubernetes.conf <<EOT
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+net.ipv4.ip_forward = 1
+EOT
+
+   21  sudo apt install -y curl gnupg2 software-properties-common apt-transport-https ca-certificates
+   22  curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/k8s.gpg
+   23  echo 'deb [signed-by=/etc/apt/keyrings/k8s.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /' | sudo tee /etc/apt/sources.list.d/k8s.list
+   24  sudo apt update
+   25  sudo apt install kubelet kubeadm kubectl -y
+   26  kubeadm join 192.168.1.25:6443 --token 5u4o1j.392m8bf6i7cycu83         --discovery-token-ca-cert-hash sha256:ad988083726e6791628ea848fb32b9bd15a29788343e31460c8785592fa34047
+   27  sudo kubeadm join 192.168.1.25:6443 --token 5u4o1j.392m8bf6i7cycu83         --discovery-token-ca-cert-hash sha256:ad988083726e6791628ea848fb32b9bd15a29788343e31460c8785592fa34047
+   28  sudo kubeadm reset
+   29  sudo kubeadm join 192.168.1.25:6443 --token 5u4o1j.392m8bf6i7cycu83         --discovery-token-ca-cert-hash sha256:ad988083726e6791628ea848fb32b9bd15a29788343e31460c8785592fa34047 -v=5
+   30  sudo kubeadm reset
+   31  sudo kubeadm join 192.168.1.25:6443 --token 5u4o1j.392m8bf6i7cycu83         --discovery-token-ca-cert-hash sha256:ad988083726e6791628ea848fb32b9bd15a29788343e31460c8785592fa34047 -v=5
+   32  sudo kubeadm reset
+   33  history .
+   34  history 
+   35  history >> ubuntu.k8s
