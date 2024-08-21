@@ -1,0 +1,67 @@
+    1  kubectl config view -o yaml
+    2* 
+    3  kubectl config view -o jsonpath
+    4  kubectl config view -o jsonpath={.}
+    5  kubectl config view -o jsonpath={.users}
+    6  kubectl config view -o jsonpath='{.users[?(@.name == "e2e")].user.password}'
+    7  kubectl config view -o jsonpath='{.}'
+    8  kubectl config view -o jsonpath='{}'
+    9  kubectl config view -o jsonpath='{.cluster}'
+   10  kubectl config view -o jsonpath='{.clusters}'
+   11  kubectl config view -o jsonpath='{.clusters[@]}'
+   12  kubectl config view -o jsonpath='{.clusters[@.name == "kubernetes"]}'
+   13  kubectl config view -o jsonpath='{.clusters[?(@.name == "kubernetes")]}'
+   14  kubectl config view -o jsonpath='{.users[].name}'    
+   15  kubectl config view -o jsonpath='{.users[*].name}'
+   16  kubectl config get-contexts
+   17  kubectl config get-contexts -o wide
+   18  kubectl config get-contexts
+   19  kubectl config current-context
+   20  kubectl config get-contexts
+   21  kubectl config view
+   22  kubectl describe nodes
+   23  kubectl describe nodes masternode 
+   24  kubectl describe nodes workernode 
+   25  kubectl describe nodes
+   26  more kubectl describe nodes 
+   27  kubectl describe nodes | more
+   28  kubectl label node masternode node-role.kubernetes.io/control-plane=master --overwrite
+   29  kubectl get nodes
+   30  kubectl describe nodes masternode| more
+   31  history 
+   32  kubectl get pods -o wide
+   33  kubectl get pod -o wide
+   34  kubectl get pods -o wide
+   35  kubectl get pods -o wide --all-namespaces 
+   36  kubectl describe pod kube-apiserver-masternode 
+   37  kubectl describe pod kube-apiserver-masternode -n=kube-system 
+   38  kubectl describe pods -n=kube-system 
+   39* 
+   40  su - root
+   41  kubectl describe pods -n=kube-system 
+   42  su - root
+   43  echo $KUBECONFIG
+   44  kubectl describe pods -n=kube-system 
+   45  su - root
+   46  kubectl get  pods  -n=kube-system -o jsonpath={.items[*].spec.containers[*].livenessProbe.*.port}
+   47  kubectl get  pods kube-controller-manager-masternode -n=kube-system -o jsonpath={.spec.containers[].livenessProbe.*.port}
+   48  kubectl get services
+   49  kubectl get services --sort-by=.metadata.name
+   50  kubectl get pods --sort-by='.status.containerStatuses[0].restartCount
+   51  kubectl get pods --sort-by='.status.containerStatuses[0].restartCount'
+   52  kubectl get pods -n=kube-system --sort-by='.status.containerStatuses[0].restartCount'
+   53  kubectl get pv
+   54  kubectl get pv -n=kube-system 
+   55  kubectl get nodes -o jsonpath='{.items[*].status.addresses[?(@.type=="ExternalIP")].address}'
+   56  JSONPATH='{range .items[*]}{@.metadata.name}:{range @.status.conditions[*]}{@.type}={@.status};{end}{end}'  && kubectl get nodes -o jsonpath="$JSONPATH" | grep "Ready=True"
+   57  kubectl top node  masternode 
+   58  kubectl cluster-info
+   59  kubectl api-resources --namespaced=true
+   60  kubectl api-resources --namespaced=false
+   61  kubectl api-resources
+   62  kubectl api-resources -o name
+   63  kubectl api-resources -o wide
+   64  ls
+   65  cd k8s/
+   66  ls
+   67  history >> basic_commands

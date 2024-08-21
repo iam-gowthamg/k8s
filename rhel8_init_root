@@ -1,0 +1,81 @@
+    1  vim /etc/hosts
+    2  vi /etc/hosts
+    3  vi /etc/hostname 
+    4  reboot
+    5  vim /etc/hosts
+    6  vi /etc/hosts
+    7  firewall-cmd
+    8  man firewall-cmd
+    9  netstat -tuln | grep 6443
+   10  telnet localhost 6443
+   11  dnf install telnet
+   12  telnet localhost 6443
+   13  sudo firewall-cmd --permanent --add-port=6443/tcp
+   14  telnet localhost 6443
+   15  sudo firewall-cmd --permanent --add-port=8472/udp
+   16  sudo firewall-cmd --permanent --add-port=10250/tcp
+   17  sudo firewall-cmd --permanent --add-port=51820/udp
+   18  sudo firewall-cmd --permanent --add-port=51821/udp
+   19  sudo firewall-cmd --permanent --zone=trusted --add-source=10.42.0.0/16
+   20  sudo firewall-cmd --permanent --zone=trusted --add-source=10.43.0.0/16
+   21  sudo firewall-cmd --reload
+   22  sudo dnf install curl wget -y
+   23  ll
+   24  his
+   25  curl -sfL https://get.k3s.io | sh -
+   26  sudo systemctl status k3s
+   27  sudo swapoff -a
+   28  sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
+   29  i#
+   30  i#wq!
+   31  sudo vi /etc/selinux/config
+   32  sudo dnf install -y iproute-tc
+   33  sudo vi /etc/modules-load.d/k8s.conf
+   34  sudo modprobe overlay
+   35  sudo modprobe br_netfilter
+   36  sudo vi /etc/sysctl.d/k8s.conf
+   37  sudo sysctl --system
+   38  export CRIO_VERSION=v1.30
+   39  cat <<EOF | sudo tee /etc/yum.repos.d/cri-o.repo
+   40  [cri-o]
+   41  name=CRI-O
+   42  baseurl=https://pkgs.k8s.io/addons:/cri-o:/stable:/$CRIO_VERSION/rpm/
+   43  enabled=1
+   44  gpgcheck=1
+   45  gpgkey=https://pkgs.k8s.io/addons:/cri-o:/stable:/$CRIO_VERSION/rpm/repodata/repomd.xml.key
+   46  EOF
+   47  sudo dnf install -y cri-o
+   48  sudo systemctl enable crio
+   49  sudo systemctl start crio
+   50  sudo systemctl status crio
+   51  KUBERNETES_VERSION=v1.30
+   52   cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
+   53  [kubernetes]
+   54  name=Kubernetes
+   55  baseurl=https://pkgs.k8s.io/core:/stable:/$KUBERNETES_VERSION/rpm/
+   56  enabled=1
+   57  gpgcheck=1
+   58  gpgkey=https://pkgs.k8s.io/core:/stable:/$KUBERNETES_VERSION/rpm/repodata/repomd.xml.key
+   59  EOF
+   60  sudo dnf install kubelet kubeadm kubectl -y
+   61  sudo systemctl enable kubelet
+   62  sudo systemctl start kubelet
+   63  sudo systemctl status kubelet
+   64  journalctl -u kubelet
+   65  journalctl -u kubelet.service
+   66  sudo kubeadm init --pod-network-cidr=192.168.10.0/16
+   67  sudo kubeadm init --pod-network-cidr=192.168.10.0/16 -v=10
+   68  vim /etc/hosts
+   69  vi /etc/hosts
+   70  vi /etc/hostname 
+   71  reboot
+   72  sudo kubeadm init --pod-network-cidr=192.168.10.0/16
+   73  vi /etc/sudoers
+   74  history | /home/master/k8s/rhel8_init_root
+   75  vi /home/master/k8s/rhel8_init_root
+   76  history | /home/master/k8s/rhel8_init_root
+   77  ll
+   78  history | rhel8_init_k8s
+   79  touch rhel8_init_k8s
+   80  history | rhel8_init_k8s
+   81  history >> /home/master/k8s/rhel8_init_root

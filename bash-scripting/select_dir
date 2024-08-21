@@ -1,0 +1,29 @@
+#!/bin/bash
+
+echo 'choose a directory:'
+
+select dir in  /bin /usr /etc
+do
+	#read -p uin
+	if [ -n $dir ];
+	then
+		DIR=$(echo "$dir" | xargs)
+		echo you have selected $DIR
+		break
+	else
+		echo invalid choice
+	fi
+
+done
+
+select dir in  /bin /usr /etc
+do
+	echo "select"
+	if [[ -n $dir ]]
+	then
+		echo "$dir"
+		break
+	else
+		echo "Not a valid number"
+	fi
+done

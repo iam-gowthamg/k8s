@@ -1,0 +1,73 @@
+    1  sudo vim /etc/hosts
+    2  su - root
+    3  ip addr
+    4  vi /etc/hosts
+    5  sudo vi /etc/hosts
+    6  su - root
+    7  mkdir -p $HOME/.kube
+    8  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+    9  su - root
+   10  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+   11  mkdir -p $HOME/.kube
+   12  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+   13  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+   14  kubctl get nodes
+   15  kubectl get nodes
+   16  ls
+   17  sudo dnf install git
+   18  mkdir k8s
+   19  cd k8s/
+   20  git init
+   21  vi rhel8_init
+   22  history >> rhel8_init 
+    1  sudo vim /etc/hosts
+    2  su - root
+    3  ip addr
+    4  vi /etc/hosts
+    5  sudo vi /etc/hosts
+    6  su - root
+    7  mkdir -p $HOME/.kube
+    8  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+    9  su - root
+   10  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+   11  mkdir -p $HOME/.kube
+   12  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+   13  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+   14  kubctl get nodes
+   15  kubectl get nodes
+   16  ls
+   17  sudo dnf install git
+   18  mkdir k8s
+   19  cd k8s/
+   20  git init
+   21  vi rhel8_init
+   22  history >> rhel8_init 
+   23  vi rhel8_init 
+   24  su - root
+   25  ll
+   26  vi rhel8_init_root 
+   27  systemctl status kubelet
+   28  kubectl taint nodes --all node-role.kubernetes.io/master-
+   29  kubectl get nodes --all
+   30* kubectl get nodes mas
+   31  kubectl taint nodes masternode node-role.kubernetes.io/master-
+   32  kubectl
+   33  kubectl taint --help
+   34  kubectl taint nodes masternode
+   35  kubectl describe nodes masternode
+   36  kubectl get pods -n kube-system
+   37  kubectl taint nodes coredns-7db6d8ff4d-hcq6l -n=kube-system
+   38* kubectl get pods
+   39  kubectl describe podes coredns-7db6d8ff4d-hcq6l -n=kube-system
+   40  kubectl describe podes coredns-7db6d8ff4d-hcq6l 
+   41  kubectl get pods --all-namespaces
+   42  kubectl describe podes coredns-7db6d8ff4d-hcq6l -n=kube-system
+   43  kubectl describe pod coredns-7db6d8ff4d-hcq6l -n=kube-system
+   44  systemctl status kubelet
+   45  kubectl describe pod coredns-7db6d8ff4d-hcq6l -n=kube-system
+   46  systemctl status kubelet
+   47  kubeadm join 192.168.1.25:6443 --token 5u4o1j.392m8bf6i7cycu83         --discovery-token-ca-cert-hash sha256:ad988083726e6791628ea848fb32b9bd15a29788343e31460c8785592fa34047
+   48  sudo kubeadm join 192.168.1.25:6443 --token 5u4o1j.392m8bf6i7cycu83         --discovery-token-ca-cert-hash sha256:ad988083726e6791628ea848fb32b9bd15a29788343e31460c8785592fa34047
+   49  kubectl get nodes
+   50  ll
+   51  history >> rhel8_init
