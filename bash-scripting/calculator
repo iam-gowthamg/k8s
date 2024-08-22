@@ -1,0 +1,107 @@
+#!/bin/bash
+#Global variables - Above
+num=0
+num1=0
+num2=0
+correct_answer=0
+ans=0
+correct=0
+max_tries=3
+
+function generate_question(){
+	generate_numbers
+	determine_operation
+	question="$num1 $operation $num2"
+}
+
+function generate_numbers(){
+	generate_number
+	num1=$num
+        generate_number
+        num2=$num
+}
+
+function generate_number(){
+	num=$((RANDOM%10+1))
+}
+
+: '
+count=5
+i=1
+while true
+do
+	generate_number
+	((i++))
+	echo $num
+	if [ $i -eq $count ] 
+	then
+		break
+	fi		
+done
+'
+
+function determine_operation(){
+	rand=$((RANDOM%3))
+	case $rand in 
+		1) operation='*';;
+		2) operation='+';;
+		3) operation='-';;
+	esac
+}
+
+function calculate_answer(){
+	CORRECT_ANSWER="$(echo "$question" | bc)"
+}
+
+function check_answer(){
+	if [ $ANSWER -eq $CORRECT_ANSWER 2>/dev/null ] ; then
+		echo "CORRECT"
+		CORRECT=1
+		if [ $TRY -ne 1 ]; then
+			write_log
+		fi
+	else
+		if [ $TRY -eq $max_tries ]; then
+			TRY=$((max_tries + 1))
+			write_log
+			echo "The correct answer was $CORRECT_ANSWER"
+			echo "LEts try the next one (press any key for next question)"
+			read
+		else
+			TRY=$(($TRY + 1))
+			echo "Nope sorry try again ... (attempt $TRY)"
+		fi
+
+fi
+}
+
+function init_log(){
+	echo "-------- Log for $(date +%d-%m-%Y' '%H:%M)" >> log
+}
+
+
+function write_log(){
+	if [ $TRY -le $max_tries ]; then
+		echo "Answer to $question ($CORRECT_ANSWER) given in $TRY tries" >> log
+	else
+		echo "Answer to $question ($CORRECT_ANSWER) not given" >> log
+	fi
+}
+
+init_log
+while true
+do
+	CORRECT=0
+	TRY=1
+	generate_question
+	calculate_answer
+	echo "How much is $question ? (attempt $TRY)"
+	echo "(Correct answer is $CORRECT_ANSWER)"
+	while [ $CORRECT -ne 1 ] && [ $TRY -le $max_tries ]
+	do
+		read ANSWER
+		check_answer
+	done
+done
+exit 0
+

@@ -1,0 +1,40 @@
+#!/bin/bash
+#Global variables - Above
+num=0
+num1=0
+num2=0
+correct_answer=0
+ans=0
+correct=0
+max_tries=3
+
+function generate_question(){
+	generate_numbers
+	determine_operation
+	questopn="$num1 $operation $num2"
+}
+
+function generate_numbers(){
+	generate_number
+	num1=$num
+        generate_number
+        num2=$num
+}
+
+function generate_number(){
+	num=$((Random%10+1))
+}
+count=5
+i=1
+while true
+do
+	generate_number
+	echo $num
+	if [ $i -eq $count ] 
+	then
+		i=i+1
+		break
+	fi		
+done
+
+

@@ -1,0 +1,14 @@
+#!/bin/bash
+arr=(one two three foure [7]=zx)
+echo "${arr[1]}"
+
+echo Array Items
+for item in ${arr[*]}
+do
+	printf " %s\n" $item
+done
+echo ${#arr[*]}
+
+echo ${!arr[*]}
+
+
